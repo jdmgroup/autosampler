@@ -4,8 +4,15 @@ function status = autosampler(command,port)
     % New line automatically added to COMMAND.
 
 %% Default arguments for testing/convenience
-if nargin ~= 2
-    port = '/dev/tty.usbmodemfa131';
+if nargin <= 1
+    if ispc == true
+        port = 'COM4';
+    elseif ismac == true
+        port = '/dev/tty.usbmodemfa131';
+    end
+end
+
+if nargin == 0
     command = '1,2'
 end
    
