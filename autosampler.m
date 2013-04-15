@@ -51,7 +51,7 @@ read_byte(read_byte == 0) = [];
 read_byte = read_byte .* (read_byte ~= 10);
 read_byte(read_byte == 0) = [];
 
-if char(read_byte') == strcat('received:',command)
+if read_byte' == double(strcat('received:',command))
     status = true;
 else
     status = false;

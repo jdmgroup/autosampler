@@ -36,11 +36,15 @@ void loop()
   if( Serial.available())
   {
     char ch = Serial.read();
-    // is this an ascii digit between 0 and 9V?
-    if((ch >= '0' && ch <= '9') || ch == 'V')
+    // is this an ascii digit between 0 and 9 or V?
+    if(ch >= '0' && ch <= '9')
     {
       // yes, accumulate the value
       values[fieldIndex] = (values[fieldIndex] * 10) + (ch - '0');
+    }
+    else if (ch == 'V')
+    {
+      values[fieldIndex] = 'V';
     }
     else if (ch == ',')  // comma is our separator, so move on to the next field
     {
@@ -51,7 +55,7 @@ void loop()
     {
       // any character not a digit or comma ends the acquisition of fields
       // in this example it's the newline character sent by the Serial Monitor
-        if (values[0] == 0) // valve mode
+        if (values[0] =='V') // valve mode
         {
           if (values[1] == 1) // switch the relay on
             {
