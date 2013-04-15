@@ -13,7 +13,7 @@ if nargin <= 1
 end
 
 if nargin == 0
-    command = '1,2'
+    command = '1,2';
 end
    
 %% serial commands
@@ -45,16 +45,13 @@ end
 %% check arduino responded correctly
 
 % get rid of carriage returns
-read_byte = read_byte .* (read_byte ~= 13)
-read_byte(read_byte == 0) = []
+read_byte = read_byte .* (read_byte ~= 13);
+read_byte(read_byte == 0) = [];
 
 % get rid of line breaks
-read_byte = read_byte .* (read_byte ~= 10)
-read_byte(read_byte == 0) = []
+read_byte = read_byte .* (read_byte ~= 10);
+read_byte(read_byte == 0) = [];
 
-read_byte
-
-status = char(read_byte)
 if char(read_byte') == strcat('received:',command)
     status = true;
 else
