@@ -42,18 +42,8 @@ catch exception
 end
 
 %% check arduino responded correctly
+returned = char(read_byte');
+expected = strcat('received:',command);
+status = strfind(returned,expected);
 
-% get rid of carriage returns
-read_byte = read_byte .* (read_byte ~= 13);
-read_byte(read_byte == 0) = [];
-
-% get rid of line breaks
-read_byte = read_byte .* (read_byte ~= 10);
-read_byte(read_byte == 0) = [];
-
-if read_byte' == double(strcat('received:',command))
-    status = true;
-else
-    status = false;
-end
 end
