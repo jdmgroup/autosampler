@@ -42,10 +42,6 @@ void loop()
       // yes, accumulate the value
       values[fieldIndex] = (values[fieldIndex] * 10) + (ch - '0');
     }
-    else if (ch == 'V')
-    {
-      values[fieldIndex] = 'V';
-    }
     else if (ch == ',')  // comma is our separator, so move on to the next field
     {
       if(fieldIndex < NUMBER_OF_FIELDS-1)
@@ -55,7 +51,7 @@ void loop()
     {
       // any character not a digit or comma ends the acquisition of fields
       // in this example it's the newline character sent by the Serial Monitor
-        if (values[0] =='V') // valve mode
+        if (values[0] == 0) // valve mode
         {
           if (values[1] == 1) // switch the relay on
             {
