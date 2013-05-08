@@ -21,7 +21,7 @@ elseif length(s) == 0
     fopen(s)
 end
 
-pause(2.5)
+pause(2)
 
 if strcmp(s.status,'open')
     status = 1;
