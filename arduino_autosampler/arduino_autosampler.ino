@@ -13,6 +13,7 @@ int cmd;
 
 void setup() {
   Serial.begin(9600);
+  delay(1000);
   pinMode(DIR_PIN, OUTPUT); 
   pinMode(STEP_PIN, OUTPUT);
   pinMode(RELAY_PIN, OUTPUT); 
@@ -40,6 +41,8 @@ void loop()
           // switch valve off
           digitalWrite(RELAY_PIN, LOW);
           Serial.println("valve off");
+          Serial.flush();
+          delay(100);
           break;
         }
       case 1: 
@@ -47,6 +50,8 @@ void loop()
           // switch valve on
           digitalWrite(RELAY_PIN, HIGH);
           Serial.println("valve on");
+          Serial.flush();
+          delay(100);
           break;
         }
       case 2: 
@@ -54,12 +59,16 @@ void loop()
           // advance one position
           float degreesToMove = (360/numberVials);
           rotateDeg(degreesToMove);
+          delay(1000);
           Serial.println("advanced");
+          Serial.flush();
+          delay(100);
           break;
         }
       default: 
         {
           Serial.println("unrecognised cmd");
+          delay(100);
         }
       }
     }

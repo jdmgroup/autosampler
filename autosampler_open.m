@@ -1,4 +1,4 @@
-function [s,status] = open_autosampler(port)
+function s = autosampler_open(port)
 % OPEN_AUTOSAMPLER opens the serial port to the autosampler on PORT
 % Returns the serial object s
 
@@ -12,21 +12,14 @@ end
 
 s = instrfind('port',port,'status','open');
 
-if length(s) == 1
-    warning('Serial port %s already open.',port)
-elseif length(s) == 0
+if isempty(s)
     s = serial(port);
     s.baudrate = 9600;
-    s.terminator = 'LF';
-    fopen(s)
-end
-
-pause(2)
-
-if strcmp(s.status,'open')
-    status = 1;
+    s.terminator = 'CR/LF';
+    fopen(s);
 else
-    status = 0;
+    warning('Serial port %s already open.',port)
 end
 
+pause(3)
 end
