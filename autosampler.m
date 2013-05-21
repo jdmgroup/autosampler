@@ -46,6 +46,7 @@ try
     
 catch
     fclose(s)
+    rethrow(exception)
 end
 
 end
