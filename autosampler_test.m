@@ -1,21 +1,17 @@
-s = autosampler_open();
-
-%autosampler('0',s) % valve to waste at start
+clear
+clc
 
 for i = 1:7
     i
     
     % collect
-    autosampler('1',s)
+    autosampler('1')
+    
+    pause(480)
     
     % waste
-    autosampler('0',s)
+    autosampler('0')
     
     % switch
-    autosampler('2',s)
-    
+    autosampler('2')
 end
-
-%autosampler('0',s)
-
-s = autosampler_close(s);

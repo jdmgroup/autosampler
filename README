@@ -14,3 +14,7 @@ More detailed documentation coming soon.
 0 = switch valve off
 1 = switch valve on
 2 = advance one position
+? = check Arduino is responding
+
+## Arduino auto reset
+Need to break the RESET EN jumper on the board to reset on serial connect.
