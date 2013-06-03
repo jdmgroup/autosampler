@@ -1,17 +1,21 @@
-clear
-clc
+% Test script that goes around the whole carousel: valve on, pause, off and
+% advance to the next position.
 
-for i = 1:7
+cmd = repmat([1 0 2],1,7)
+
+pausetime = input('Enter pause time in seconds:\n')
+
+for i = 1:length(cmd)
+
     i
+    cmd(i)
     
-    % collect
-    autosampler('1')
-    
-    pause(480)
-    
-    % waste
-    autosampler('0')
-    
-    % switch
-    autosampler('2')
+if cmd(i) == 0
+    fprintf('%s: pausing for %i s before sending command\n',...
+        datestr(now),pausetime)
+    pause(pausetime)
+end
+
+autosampler(num2str(cmd(i)))
+
 end

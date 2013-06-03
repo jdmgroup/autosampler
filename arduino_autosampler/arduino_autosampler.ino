@@ -34,14 +34,14 @@ void parsecommand(int cmd) {
       {
         digitalWrite(RELAY_PIN, LOW); 
         Serial.println("off");
-        Serial.flush();
+//        Serial.flush();
         break;
       }
     case 49: // 1: switch valve on
       {
         digitalWrite(RELAY_PIN, HIGH);
         Serial.println("on");
-        Serial.flush();
+//        Serial.flush();
         break;
       }
     case 50: // 2: advance one position
@@ -49,19 +49,19 @@ void parsecommand(int cmd) {
         float degreesToMove = (360/numberVials);
         rotateDeg(degreesToMove);
         Serial.println("moved");
-        Serial.flush();
+ //       Serial.flush();
         break;
       }
     case 63: // ?: check arduino status 
       {
         Serial.println("ready");
-        Serial.flush();
+   //     Serial.flush();
         break;
       }
     default:
       {
         Serial.println("error");
-        Serial.flush();
+   //     Serial.flush();
       }
     }
 }

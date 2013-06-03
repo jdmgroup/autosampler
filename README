@@ -1,4 +1,4 @@
-Arduino-powered autosampler
+Arduino powered autosampler
 ===========================
 
 CC-BY 3.0 licenced
@@ -17,4 +17,15 @@ More detailed documentation coming soon.
 ? = check Arduino is responding
 
 ## Arduino auto reset
-Need to break the RESET EN jumper on the board to reset on serial connect.
+You must break the RESET EN jumper on the board to disable automatic reset
+when you start a serial connection.
+
+## Tested on
+Windows 7 64-bit using MATLAB R2013a and Arduino 1.0.5
+
+## Known issues
+For an unknown reason it is incompatible with HP Compaq dc7800p PCs.
+Arduino responds to commands but the buffer can't be read. I posted about
+this on the Arduino forum. For more info see:
+
+http://forum.arduino.cc/index.php?topic=169067
