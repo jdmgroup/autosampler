@@ -8,17 +8,17 @@ Arduino-powered autosampler
 [CC-BY 3.0](http://creativecommons.org/licenses/by/3.0/deed.en_US)
 
 ## RS232 Commands
-0 = switch valve off
-1 = switch valve on
-2 = advance one position
-? = check Arduino is responding
+0 = switch valve off, response `off\r\n`.
+1 = switch valve on, response `on\r\n`.
+2 = advance one position, response `moved\r\n`.
+? = check Arduino is responding, response `ready\r\n`.
 
 ## Arduino auto reset
 
-The Arduino Uno automatically resets itself upon serial connection. Two options to get around this:
+The Arduino Uno automatically resets itself upon opening a serial connection. Two options to deal with this:
 
-1. Break the [RESET EN jumper](http://playground.arduino.cc/Main/DisablingAutoResetOnSerialConnection).
-2. Keep the serial connection open when in use.
+1. Keep the serial connection open when in use, which is what `autosampler.py` does.
+2. Break the [RESET EN jumper](http://playground.arduino.cc/Main/DisablingAutoResetOnSerialConnection).
 
-## Tested on
-Windows 7 64-bit using MATLAB R2013a and Arduino 1.0.5
+## Requirements
+Requires [PySerial 2.6][PySerial]. Developed/tested on Windows 7 with Python 2.7.3 ([Enthought Canopy][] 7.3.1 64-bit).
