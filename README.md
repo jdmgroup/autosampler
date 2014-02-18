@@ -9,7 +9,7 @@ Written by [Thomas W. Phillips](http://www3.imperial.ac.uk/people/thomas.phillip
 
 ## Requirements
 
-Requires [PySerial 2.6](http://pyserial.sourceforge.net). Developed/tested on Windows 7 with Python 2.7.3 ([Enthought Canopy][] 7.3.1 64-bit).
+Requires [PySerial 2.6](http://pyserial.sourceforge.net). Developed/tested on Windows 7 with Python 2.7.3 (Enthought Canopy 7.3.1 64-bit).
 
 ## RS232 Commands
 
