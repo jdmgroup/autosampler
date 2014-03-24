@@ -1,5 +1,6 @@
 import serial
 import argparse
+import logging
 
 class Autosampler:
 	def __init__(self,comport):
@@ -11,7 +12,9 @@ class Autosampler:
 		resp = self.serialcon.read(7)
 		
 		if not resp.startswith('moved'):
-			print('ERROR: Unexpected response from autosampler after advance')
+			logging.error('Autosampler: unexpected response after advance')
+		else:
+			logging.info('Autosampler: advanced')
 
 	def valve(self,state):
 		if state:
@@ -23,7 +26,9 @@ class Autosampler:
 
 		resp = self.serialcon.read(len(expect)+2)
 		if not resp.startswith(expect):
-			print('ERROR: Unexpected response from autosampler after valve')
+			logging.error('Autosampler: unexpected response after valve %s command',expect)
+		else:
+			logging.info('Autosampler: valve %s',expect)
 
 
 	def check(self):
@@ -32,7 +37,9 @@ class Autosampler:
 		resp = self.serialcon.read(len(expect)+2)
 		
 		if not resp.startswith(expect):
-			print('ERROR: nexpected response from autosampler with check')
+			logging.critical('Autosampler: status check failed')
+		else:
+			logging.info('Autosampler: status check passed')
 
 # Command line options
 # Run with -h flag to see help
